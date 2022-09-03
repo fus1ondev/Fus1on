@@ -1,0 +1,23 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Box from '@components/Box.astro';
+import { Image } from '@astrojs/image/components';
+---
+
+<BaseLayout title="Error 404">
+  <Box hasZeroPadding={false}>
+    <h1>Error 404</h1>
+    <p>
+      お探しのページは存在しません。
+    </p>
+    <Image class="cat" src="https://source.unsplash.com/featured/1000x600/?cute,sleeping,cat" width={1000} height={600} format='png' />
+  </Box>
+</BaseLayout>
+<style>
+  .cat {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+</style>
