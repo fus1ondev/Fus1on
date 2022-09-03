@@ -1,11 +1,47 @@
 ---
-import Layout from '../layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Box from '@components/Box.astro';
+import Links from '@components/Links.astro';
 ---
 
-<Layout title="Welcome to Astro.">
+<BaseLayout title="">
+  <Box hasZeroPadding={false}>
+    <div class="space-between">
+      <h1>About Me</h1>
+      <div id="wide-links">
+        <Links/>
+      </div>
+    </div>
+    <p>I'm a Japanese high school student and a iOS / macOS app developer.<br>I also sometimes make web apps and plugins.</p>
+    <p>プログラミングとデザインが好きな高校生です。<br>iOS / macOSのアプリ開発をしたり、Webアプリやプラグインを作ったりしています。</p>
+    <div id="small-links">
+      <Links/>
+    </div>
+  </Box>
+  <Box hasZeroPadding={false}>
+    <h1>Works</h1>
+  </Box>
+  <Box hasZeroPadding={false}>
+    <h1>Posts</h1>
+  </Box>
+</BaseLayout>
+<style lang="scss">
+  .space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #wide-links {
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+  #small-links {
+    display: flex;
+    flex-direction: row-reverse;
 
-</Layout>
-
-<style>
-
+    @media (min-width: 750px) {
+      display: none;
+    }
+  }
 </style>

@@ -1,0 +1,24 @@
+<div class="box">
+  <slot />
+</div>
+<style lang="scss">
+	.box {
+    width: 100%;
+    padding: 20px 30px;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    :global(p) {
+      font-weight: 400;
+      line-height: 1.9;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 750px) {
+      border-radius: 0;
+      box-shadow: none;
+      padding: 20px 20px;
+    }
+  }
+</style>

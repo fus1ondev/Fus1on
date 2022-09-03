@@ -1,0 +1,65 @@
+<header>
+  <div class="inner">
+    <a class="title" href="/">Fus<span id="one">1</span>on.dev</a>
+    <div class="links">
+      <a class="link" href="/works">Works</a>
+      <a class="link" href="/posts">Posts</a>
+    </div>
+  </div>
+</header>
+<style lang="scss">
+  header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    background-color: var(--bg-secondary);
+    box-shadow: var(--shadow) 0 2px 6px;
+    z-index: 100;
+
+    .inner {
+      height: 100%;
+      width: 750px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+
+      @media (max-width: 750px) {
+        width: 100%;
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--text-primary);
+        text-decoration: none;
+
+        #one {
+          color: #355CEF;
+        }
+      }
+
+      .links {
+        display: flex;
+        gap: 4px;
+
+        .link {
+          font-size: 16px;
+          font-weight: 600;
+          color: var(--text-primary);
+          text-decoration: none;
+          border-radius: 4px;
+          transition: .2s;
+          padding: 8px 12px;
+
+          &:hover {
+            background: var(--btn-hover);
+          }
+        }
+      }
+    }
+  }
+</style>

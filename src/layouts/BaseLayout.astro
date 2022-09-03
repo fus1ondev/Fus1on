@@ -1,4 +1,8 @@
 ---
+import 'modern-normalize/modern-normalize.css';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import Content from '@components/Content.astro';
 import '@styles/themes.scss';
 
 export interface Props {
@@ -15,21 +19,29 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title ? title + ' | Fus1on' : 'Fus1on'}</title>
+		<title>{title}</title>
+    <script set:html={`window.twttr=(function(f,b,g){var e,c=f.getElementsByTagName(b)[0],a=window.twttr||{};if(f.getElementById(g)){return a}e=f.createElement(b);e.id=g;e.src="https://platform.twitter.com/widgets.js";c.parentNode.insertBefore(e,c);a._e=[];a.ready=function(d){a._e.push(d)};return a}(document,"script","twitter-wjs"));`} />
+    <script async defer data-website-id="9d1d6967-7a2d-40f6-a3df-e24c41ea0caa" src="https://fus1on-umami.up.railway.app/umami.js"></script>
 	</head>
 	<body>
-		<slot />
+    <Header />
+    <Content>
+      <slot />
+    </Content>
+    <Footer />
 	</body>
 </html>
-<style>
+<style lang="scss">
 	html {
 		font-family: system-ui, sans-serif;
     height: auto;
     min-height: 100%;
+    background-color: var(--bg-primary);
 	}
 
 	body {
     color: var(--text-primary);
 		margin: 0;
+    height: 100%;
 	}
 </style>

@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon';
+---
+
+<div class="links">
+  <a class="link" href="https://twitter.com/Fus1onDev/" target="_blank" rel="noopener noreferrer">
+    <Icon pack="simple-icons" name="twitter" class="icon" />
+  </a>
+  <a class="link" href="https://zenn.dev/Fus1onDev/" target="_blank" rel="noopener noreferrer">
+    <Icon pack="simple-icons" name="zenn" class="icon" />
+  </a>
+  <a class="link" href="https://github.com/Fus1onDev/" target="_blank" rel="noopener noreferrer">
+    <Icon pack="simple-icons" name="github" class="icon" />
+  </a>
+</div>
+<style lang="scss">
+  .links {
+    display: flex;
+    gap: 10px;
+
+    .link {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      transition: .2s;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--btn-hover);
+      }
+
+      .icon {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+  [astro-icon="simple-icons:twitter"] {
+      color: #1da1f2;
+  }
+  [astro-icon="simple-icons:zenn"] {
+      color: #3EA8FF;
+  }
+  [astro-icon="simple-icons:github"] {
+      color: var(--text-primary);
+  }
+</style>
