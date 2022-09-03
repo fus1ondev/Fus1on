@@ -1,0 +1,233 @@
+.content {
+  & > *:first-child {
+    margin-top: 0;
+  }
+  line-height: 1.9;
+
+  i,
+  cite,
+  em {
+    font-style: italic;
+  }
+  strong {
+    font-weight: 700;
+  }
+
+  p + p {
+    margin-top: 1.5em;
+  }
+
+  ul,
+  ol {
+    margin: 1.4rem 0;
+    line-height: 1.7;
+    & > li {
+      margin: 0.4rem 0;
+    }
+    ul,
+    ol {
+      margin: 0.2em 0;
+    }
+    p {
+      margin: 0;
+    }
+  }
+
+  ul {
+    padding-left: 1.8em;
+    & > li {
+      list-style: disc;
+      &::marker {
+        font-size: 1.1em;
+        color: var(--gray-primary);
+      }
+    }
+  }
+  ol {
+    padding-left: 1.7em;
+    & > li {
+      list-style: decimal;
+      padding-left: 0.2em;
+      &::marker {
+        color: var(--gray-secondary);
+        font-weight: 600;
+        letter-spacing: -0.05em;
+      }
+    }
+  }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+    word-wrap: break-word;
+  
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    & + p {
+      margin-top: 0.3em;
+    }
+  }
+
+  h1,
+  h2 {
+    margin-top: 2.3em;
+    margin-bottom: 0.5em;
+  }
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 2.25em;
+    margin-bottom: 0.5em;
+  }
+  h1 {
+    padding-bottom: 0.2em;
+    margin-bottom: 1.1rem;
+    font-size: 1.7em;
+    position: relative;
+    border-bottom: solid 1px var(--divider);
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+  h4 {
+    font-size: 1.1em;
+  }
+  h5 {
+    font-size: 1em;
+  }
+  h6 {
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 750px) {
+    h1 {
+      font-size: 1.6em;
+    }
+    h2 {
+      font-size: 1.4em;
+    }
+    h3 {
+      font-size: 1.2em;
+    }
+    h4 {
+      font-size: 1.1em;
+    }
+    h5 {
+      font-size: 1em;
+    }
+    h6 {
+      font-size: 0.85em;
+    }
+  }
+
+  hr {
+    border-top: 2px solid var(--divider);
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    margin: 2.5rem 0;
+  }
+
+  blockquote {
+    font-size: 0.97em;
+    margin: 1.4rem 0;
+    border-left: solid 3px var(--gray-primary);
+    padding: 2px 0 2px 0.7em; /* 上下にpaddingをわずかでも設定しておくと、固定ヘッダー対策で見出しにネガティブマージンが指定されたときにも崩れない。ref: https://github.com/zenn-dev/zenn-roadmap/issues/191 */
+    color: var(--gray-secondary);
+    p {
+      margin: 1rem 0;
+    }
+    & > :first-child {
+      margin-top: 0;
+    }
+
+    & > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  table {
+    margin: 1.2rem auto;
+    width: auto;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    line-height: 1.5;
+    word-break: normal; // Layout will break without this.
+    display: block;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  th,
+  td {
+    padding: 0.5rem;
+    border: solid 1px var(--table-border);
+    background: var(--bg-secondary);
+  }
+  th {
+    font-weight: 700;
+    background: var(--table-header);
+  }
+  p > code {
+    padding: 0.2em 0.4em;
+    background: var(--inline-code);
+    font-size: 0.85em;
+    border-radius: 4px;
+    vertical-align: 0.08em;
+  }
+
+  pre {
+    margin: 1.3rem 0;
+    background: #1a2638;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0.7em;
+    box-shadow: 0 4px 6px -1px rgb(0, 14, 30, 0.15);
+    word-break: normal; // iOSで折り返されるのを防ぐ
+    word-wrap: normal; // iOSで折り返されるのを防ぐ
+    /* flex + codeの隣に疑似要素を配置することで横スクロール時の右端の余白を作る */
+    display: flex;
+    &:after {
+      content: '';
+      width: 8px;
+      flex-shrink: 0;
+    }
+    code {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      font-size: 0.9em;
+      color: #fff;
+    }
+    & > code {
+      display: block;
+      padding: 1.1rem; // このようにしないとpreのスクロールバーがコードに重なってしまう
+      @media (max-width: 750px) {
+        padding: 1rem 0.8rem;
+        font-size: 0.85em;
+      }
+    }
+  }
+
+  img:not(.emoji) {
+    margin: 1.5rem auto;
+    display: table;
+    max-width: 100%;
+    height: auto;
+  }
+  img + br {
+    display: none;
+  }
+}

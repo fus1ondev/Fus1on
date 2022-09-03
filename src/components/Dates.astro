@@ -1,0 +1,38 @@
+---
+import type { MarkdownInstance } from 'astro';
+import { Icon } from 'astro-icon';
+import dayjs from 'dayjs';
+
+const formatDate = (str: string) => {
+  return dayjs(str).format('YYYY.MM.DD')
+};
+
+export interface Props {
+	post: MarkdownInstance<Record<string, any>> | Record<string, any>;
+}
+
+const { post } = Astro.props as Props;
+---
+<div class="dates">
+  {post.frontmatter.pubDate && <div class="date"><Icon pack="fa-solid" name="pen" class="icon" />{formatDate(post.frontmatter.pubDate)}</div>}
+  {post.frontmatter.modDate && <div class="date"><Icon pack="fa" name="refresh" class="icon" />{formatDate(post.frontmatter.modDate)}</div>}
+</div>
+<style lang="scss">
+  .dates {
+    display: flex;
+    gap: 10px;
+
+    .date {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>

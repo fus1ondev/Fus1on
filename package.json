@@ -16,7 +16,13 @@
     "@astrojs/image": "^0.5.0",
     "astro-compress": "^1.0.6",
     "astro-icon": "^0.7.3",
+    "dayjs": "^1.11.5",
+    "katex": "^0.16.2",
     "modern-normalize": "^1.1.0",
+    "rehype-katex": "^6.0.2",
+    "remark-code-titles": "^0.1.2",
+    "remark-emoji": "^3.0.2",
+    "remark-math": "^5.1.1",
     "sass": "^1.54.8"
   }
 }

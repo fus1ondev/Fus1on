@@ -1,0 +1,26 @@
+---
+import Layout from '@layouts/BaseLayout.astro';
+import PostBox from '@components/PostBox.astro';
+const posts = await Astro.glob('./*.md');
+const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+---
+
+<Layout title="Posts">
+  <div class="grid">
+    {nonDraftPosts.map(post => (
+      <PostBox post={post} showDates />
+    ))}
+  </div>
+</Layout>
+<style lang="scss">
+  .grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 14px;
+    
+    @media (max-width: 750px) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

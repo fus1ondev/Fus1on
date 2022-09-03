@@ -1,0 +1,78 @@
+---
+import type { MarkdownInstance } from 'astro';
+import Badges from '@components/Badges.astro';
+import Dates from '@components/Dates.astro';
+
+export interface Props {
+	post: MarkdownInstance<Record<string, any>>;
+  showDates: boolean;
+}
+
+const { post, showDates } = Astro.props as Props;
+---
+<div class="box">
+  <div class="thumbnail">
+    <img class="img" src={'https://res.cloudinary.com/fus1ondev/image/upload/c_fill,f_auto,h_600,q_auto:eco,w_1000/v1661647997/Fus1on/' + post.frontmatter.thumbnail} loading="lazy" />
+  </div>
+  <div class="container">
+    <h2>{post.frontmatter.title}</h2>
+    <div class="meta">
+      {showDates && <Dates post={post} />}
+      {post.frontmatter.tags && <Badges badgeIds={post.frontmatter.badges} />}
+    </div>
+  </div>
+  <a href={post.url} class="link" />
+</div>
+<style lang="scss">
+  .box {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .thumbnail {
+      position: relative;
+      width: 100%;
+      padding-top: 60%;
+      overflow: hidden;
+
+      .img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        object-fit: cover;
+      }
+    }
+    
+    .container {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      h2 {
+        margin: 0;
+      }
+
+      .meta {
+        margin-top: auto;
+      }
+    }
+  }
+</style>
