@@ -7,10 +7,10 @@ import { getImage } from '../../node_modules/@astrojs/image';
 import {getImageSize} from './get-image-size';
 import {fileURLToPath} from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+//const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const getOptimizedImageSrc = async (slug: string, fileName: string, maxWidth: number | undefined, maxHeight: number | undefined) => {
-  const filePathDir = path.resolve(__dirname, '../../public/images/', slug);
+  const filePathDir = path.resolve(process.cwd(), '../../public/images/', slug);
 
   // TODO: How should remote images be handled?
   const dimensions = getImageSize(fileName, filePathDir) || {
