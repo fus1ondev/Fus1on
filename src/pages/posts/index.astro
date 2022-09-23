@@ -1,13 +1,18 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import PostBox from '@components/PostBox.astro';
-const posts = await Astro.glob('./*.md');
-const nonDraftPosts = posts.filter((post) => !post.frontmatter.draft);
+
+const isProduction = import.meta.env.MODE === 'production';
+
+let posts = await Astro.glob('./*.md');
+if (isProduction) {
+  posts = posts.filter((post: any) => !post.frontmatter.draft);
+}
 ---
 
 <Layout title="Posts">
   <div class="grid">
-    {nonDraftPosts.map(post => (
+    {posts.map((post: any) => (
       <PostBox post={post} showDates />
     ))}
   </div>

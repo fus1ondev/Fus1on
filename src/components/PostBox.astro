@@ -18,7 +18,8 @@ const { post, showDates } = Astro.props as Props;
     <h2>{post.frontmatter.title}</h2>
     <div class="meta">
       {showDates && <Dates post={post} />}
-      {post.frontmatter.tags && <Badges badgeIds={post.frontmatter.badges} />}
+      <!--{post.frontmatter.badges && <Badges badgeIds={post.frontmatter.badges} />}-->
+      {post.frontmatter.draft && <span class="draft">(Draft)</span>}
     </div>
   </div>
   <a href={post.url} class="link" />
@@ -71,8 +72,16 @@ const { post, showDates } = Astro.props as Props;
       }
 
       .meta {
+        display: flex;
+        align-items: center;
         margin-top: auto;
+        gap: 8px;
       }
+    }
+
+    .draft {
+      color: var(--text-secondary);
+      font-size: 14px;
     }
   }
 </style>

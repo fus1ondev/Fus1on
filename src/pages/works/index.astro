@@ -1,0 +1,59 @@
+---
+import Layout from '@layouts/BaseLayout.astro';
+import PostBox from '@components/PostBox.astro';
+
+const isProduction = import.meta.env.MODE === 'production';
+
+let apps = await Astro.glob('./apps/*.md');
+let websites = await Astro.glob('./websites/*.md');
+let tools = await Astro.glob('./tools/*.md');
+let plugins = await Astro.glob('./plugins/*.md');
+if (isProduction) {
+  apps = apps.filter((post: any) => !post.frontmatter.draft);
+  websites = websites.filter((post: any) => !post.frontmatter.draft);
+  tools = tools.filter((post: any) => !post.frontmatter.draft);
+  plugins = plugins.filter((post: any) => !post.frontmatter.draft);
+}
+---
+
+<Layout title="Works">
+  <h2 class="category-header">Apps</h2>
+  <div class="grid">
+    {apps.map(post => (
+      <PostBox post={post} showDates={false} />
+    ))}
+  </div>
+  <h2 class="category-header">Websites</h2>
+  <div class="grid">
+    {websites.map(post => (
+      <PostBox post={post} showDates={false} />
+    ))}
+  </div>
+  <h2 class="category-header">Tools</h2>
+  <div class="grid">
+    {tools.map(post => (
+      <PostBox post={post} showDates={false} />
+    ))}
+  </div>
+  <h2 class="category-header">Plugins</h2>
+  <div class="grid">
+    {plugins.map(post => (
+      <PostBox post={post} showDates={false} />
+    ))}
+  </div>
+</Layout>
+<style lang="scss">
+  .category-header {
+    padding: 0 22px;
+  }
+  .grid {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 14px;
+
+    @media (max-width: 750px) {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

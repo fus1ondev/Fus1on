@@ -15,7 +15,7 @@ const post = Astro.props;
       <h1>{post.frontmatter.title}</h1>
       <div class="meta">
         <Dates post={post}/>
-        {post.frontmatter.tags && <Badges badgeIds={post.frontmatter.badges} />}
+        {post.frontmatter.badges && <Badges badgeIds={post.frontmatter.badges} />}
       </div>
     </div>
     <div class="thumbnail">
