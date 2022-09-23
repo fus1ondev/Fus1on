@@ -26,7 +26,8 @@ export default defineConfig({
             expandDirectories: true,
             onlyFiles: true,
           }
-        ]
+        ],
+        verbose: true
       })
     ]
   },
