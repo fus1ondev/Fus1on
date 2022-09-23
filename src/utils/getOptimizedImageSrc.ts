@@ -13,7 +13,7 @@ export const getOptimizedImageSrc = async (slug: string, fileName: string, maxWi
   const filePathDir = path.resolve(__dirname, '../../public/images/', slug);
 
   // TODO: How should remote images be handled?
-  const dimensions = getImageSize(fileName, filePathDir) || {
+  /*const dimensions = getImageSize(fileName, filePathDir) || {
     height: undefined,
     width: undefined,
   };
@@ -31,12 +31,12 @@ export const getOptimizedImageSrc = async (slug: string, fileName: string, maxWi
   if (maxWidth && dimensions.width > maxWidth) {
     dimensions.width = maxWidth;
     dimensions.height = maxWidth * imgRatioHeight;
-  }
+  }*/
 
   const imgProps = await getImage({
     src: `/images/${slug}/${fileName}`,
-    height: dimensions.height,
-    width: dimensions.width,
+    //height: dimensions.height,
+    //width: dimensions.width,
     format: 'webp',
   });
 
