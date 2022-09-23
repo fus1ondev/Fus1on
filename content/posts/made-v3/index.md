@@ -1,8 +1,8 @@
 ---
-layout: ../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: 3回目のリニューアル
 pubDate: 2022-08-29
-thumbnail: thumbnail_hs7awv.jpg
+thumbnail: suwa-lake.jpg
 draft: false
 ---
 

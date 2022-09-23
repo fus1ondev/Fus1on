@@ -1,7 +1,7 @@
 ---
-layout: ../../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: EjectKey
-thumbnail: ejectkey_sgcrwr.png
+
 badges:
   - macos
   - swift

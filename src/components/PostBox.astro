@@ -2,6 +2,7 @@
 import type { MarkdownInstance } from 'astro';
 import Badges from '@components/Badges.astro';
 import Dates from '@components/Dates.astro';
+import { getOptimizedImageSrc } from '@utils/getOptimizedImageSrc';
 
 export interface Props {
 	post: MarkdownInstance<Record<string, any>>;
@@ -9,10 +10,12 @@ export interface Props {
 }
 
 const { post, showDates } = Astro.props as Props;
+
+const thumbnailSrc = post.frontmatter.thumbnail ? await getOptimizedImageSrc(post.url!, post.frontmatter.thumbnail, 1000, 1000) : '';
 ---
 <div class="box">
   <div class="thumbnail">
-    <img class="img" src={'https://res.cloudinary.com/fus1ondev/image/upload/c_fill,f_auto,h_600,q_auto:eco,w_1000/v1661647997/Fus1on/' + post.frontmatter.thumbnail} loading="lazy" />
+    <img class="img" src={thumbnailSrc}/>
   </div>
   <div class="container">
     <h2>{post.frontmatter.title}</h2>
@@ -69,6 +72,7 @@ const { post, showDates } = Astro.props as Props;
 
       h2 {
         margin: 0;
+        font-size: 22px;
       }
 
       .meta {

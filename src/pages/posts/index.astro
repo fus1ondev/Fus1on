@@ -1,13 +1,9 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import PostBox from '@components/PostBox.astro';
+import { getPosts } from '@utils/getPosts';
 
-const isProduction = import.meta.env.MODE === 'production';
-
-let posts = await Astro.glob('./*.md');
-if (isProduction) {
-  posts = posts.filter((post: any) => !post.frontmatter.draft);
-}
+const posts = getPosts(await Astro.glob('../../../content/posts/*/*.md'));
 ---
 
 <Layout title="Posts">
@@ -24,7 +20,7 @@ if (isProduction) {
     grid-template-columns: 1fr 1fr;
     padding: 0 14px;
     
-    @media (max-width: 750px) {
+    @media (max-width: 720px) {
       grid-template-columns: 1fr;
     }
   }

@@ -1,5 +1,6 @@
 :root{
   @media (prefers-color-scheme: light) {
+    --accent: #358bef;
     --text-primary: #333333;
     --text-secondary: #777777;
     --bg-primary: #f4f5f7;
@@ -15,6 +16,7 @@
     --inline-code: #215aa012;
   }
   @media (prefers-color-scheme: dark) {
+    --accent: #358bef;
     --text-primary: #ffffff;
     --text-secondary: #a9a9a9;
     --bg-primary: #141920;

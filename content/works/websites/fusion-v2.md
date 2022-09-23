@@ -1,7 +1,7 @@
 ---
-layout: ../../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: Fusion (v2)
-thumbnail: portfolio_pqx6ak.png
+
 badges:
   - nextdotjs
   - typescript

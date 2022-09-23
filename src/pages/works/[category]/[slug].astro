@@ -1,0 +1,23 @@
+---
+import PostLayout from "@/layouts/PostLayout.astro";
+import { getPosts } from "@/utils/getPosts";
+
+export async function getStaticPaths() {
+  const works = getPosts(await Astro.glob('../../../../content/works/*/*/*.md'));
+  return works.map((post: any) => ({
+    params: {
+      category: post.slug.split('/')[0],
+      slug: post.slug.split('/')[1],
+    },
+    props: {
+      post,
+    }
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<PostLayout post={post}>
+  <div set:html={post.compiledContent()} />
+</PostLayout>

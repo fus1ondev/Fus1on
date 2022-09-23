@@ -1,7 +1,7 @@
 ---
-layout: ../../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: Fusion (v1)
-thumbnail: old-fusion_p9nuup.png
+
 badges:
   - hugo
   - jquery

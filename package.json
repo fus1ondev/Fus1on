@@ -14,15 +14,20 @@
   },
   "devDependencies": {
     "@astrojs/image": "^0.7.1",
+    "@types/node": "^18.7.18",
     "astro-compress": "^1.0.8",
     "astro-icon": "^0.7.3",
     "dayjs": "^1.11.5",
+    "hast": "^1.0.0",
     "katex": "^0.16.2",
     "modern-normalize": "^1.1.0",
+    "path": "^0.12.7",
     "rehype-katex": "^6.0.2",
     "remark-code-titles": "^0.1.2",
     "remark-emoji": "^3.0.2",
     "remark-math": "^5.1.1",
-    "sass": "^1.55.0"
+    "rollup-plugin-copy": "^3.4.0",
+    "sass": "^1.55.0",
+    "unified": "^10.1.2"
   }
 }

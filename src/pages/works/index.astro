@@ -1,43 +1,36 @@
 ---
 import Layout from '@layouts/BaseLayout.astro';
 import PostBox from '@components/PostBox.astro';
+import { getPosts } from '@utils/getPosts';
 
-const isProduction = import.meta.env.MODE === 'production';
-
-let apps = await Astro.glob('./apps/*.md');
-let websites = await Astro.glob('./websites/*.md');
-let tools = await Astro.glob('./tools/*.md');
-let plugins = await Astro.glob('./plugins/*.md');
-if (isProduction) {
-  apps = apps.filter((post: any) => !post.frontmatter.draft);
-  websites = websites.filter((post: any) => !post.frontmatter.draft);
-  tools = tools.filter((post: any) => !post.frontmatter.draft);
-  plugins = plugins.filter((post: any) => !post.frontmatter.draft);
-}
+const apps = getPosts(await Astro.glob('../../../content/works/apps/*/*.md'));
+const websites = getPosts(await Astro.glob('../../../content/works/websites/*/*.md'));
+const tools = getPosts(await Astro.glob('../../../content/works/tools/*/*.md'));
+const plugins = getPosts(await Astro.glob('../../../content/works/plugins/*/*.md'));
 ---
 
 <Layout title="Works">
   <h2 class="category-header">Apps</h2>
   <div class="grid">
-    {apps.map(post => (
+    {apps.map((post: any) => (
       <PostBox post={post} showDates={false} />
     ))}
   </div>
   <h2 class="category-header">Websites</h2>
   <div class="grid">
-    {websites.map(post => (
+    {websites.map((post: any) => (
       <PostBox post={post} showDates={false} />
     ))}
   </div>
   <h2 class="category-header">Tools</h2>
   <div class="grid">
-    {tools.map(post => (
+    {tools.map((post: any) => (
       <PostBox post={post} showDates={false} />
     ))}
   </div>
   <h2 class="category-header">Plugins</h2>
   <div class="grid">
-    {plugins.map(post => (
+    {plugins.map((post: any) => (
       <PostBox post={post} showDates={false} />
     ))}
   </div>
@@ -52,7 +45,7 @@ if (isProduction) {
     grid-template-columns: 1fr 1fr;
     padding: 0 14px;
 
-    @media (max-width: 750px) {
+    @media (max-width: 720px) {
       grid-template-columns: 1fr;
     }
   }

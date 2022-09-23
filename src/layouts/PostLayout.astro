@@ -3,11 +3,14 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import ZeroPaddingBox from '@components/ZeroPaddingBox.astro';
 import Dates from '@components/Dates.astro';
 import Badges from '@components/Badges.astro';
+import { getOptimizedImageSrc } from '@utils/getOptimizedImageSrc';
 import 'katex/dist/katex.min.css';
 import '@styles/content.scss';
 import '@styles/prism.scss';
 
-const post = Astro.props;
+const { post } = Astro.props;
+
+const thumbnailSrc = post.frontmatter.thumbnail ? await getOptimizedImageSrc(post.url!, post.frontmatter.thumbnail, 1000, 1000) : '';
 ---
 <BaseLayout title={post.frontmatter.title}>
   <ZeroPaddingBox>
@@ -19,7 +22,7 @@ const post = Astro.props;
       </div>
     </div>
     <div class="thumbnail">
-      <img class="img" src={'https://res.cloudinary.com/fus1ondev/image/upload/c_fill,f_auto,h_600,q_auto:eco,w_1000/v1661647997/Fus1on/' + post.frontmatter.thumbnail} />
+      <img class="img" src={thumbnailSrc}/>
     </div>
     <article class="content">
       <slot />
@@ -30,7 +33,7 @@ const post = Astro.props;
   .header {
     padding: 30px 40px;
 
-    @media (max-width: 750px) {
+    @media (max-width: 720px) {
       padding: 30px 20px;
     }
 
@@ -54,7 +57,7 @@ const post = Astro.props;
   }
   .content {
     padding: 40px 40px;
-    @media (max-width: 750px) {
+    @media (max-width: 720px) {
       padding: 40px 20px;
     }
   }

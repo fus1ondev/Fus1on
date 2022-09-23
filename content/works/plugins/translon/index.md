@@ -1,7 +1,7 @@
 ---
-layout: ../../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: Translon
-thumbnail: translon_sv8sw2.png
+
 badges:
   - vscode
   - typescript

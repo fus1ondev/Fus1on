@@ -1,8 +1,8 @@
 ---
-layout: ../../layouts/PostLayout.astro
+layout: src/layouts/PostLayout.astro
 title: "ZennのMarkdown記法一覧"
 pubDate: 2022-09-02
-thumbnail: thumbnail_hs7awv.jpg
+
 draft: true
 ---
 
